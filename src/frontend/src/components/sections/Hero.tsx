@@ -45,7 +45,7 @@ export function Hero() {
           className="mb-8"
         >
           <img
-            src="/assets/generated/hope-for-humanity-logo-transparent.dim_800x500.png"
+            src="/assets/generated/hope-for-humanity-logo-v2-transparent.dim_800x500.png"
             alt="Hope for Humanity"
             className="h-24 w-auto object-contain mx-auto"
           />

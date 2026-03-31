@@ -48,7 +48,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1 space-y-5">
             <img
-              src="/assets/generated/hope-for-humanity-logo-transparent.dim_800x500.png"
+              src="/assets/generated/hope-for-humanity-logo-v2-transparent.dim_800x500.png"
               alt="Hope for Humanity"
               className="h-16 w-auto object-contain"
             />
@@ -109,10 +109,10 @@ export function Footer() {
               <div className="flex gap-3 items-center">
                 <Mail size={16} className="text-gold flex-shrink-0" />
                 <a
-                  href="mailto:info@hopeforhumanity.org"
+                  href="mailto:info@hfhcd.org"
                   className="text-warmwhite/70 hover:text-gold text-sm transition-colors"
                 >
-                  info@hopeforhumanity.org
+                  info@hfhcd.org
                 </a>
               </div>
               <div className="flex gap-3 items-center">

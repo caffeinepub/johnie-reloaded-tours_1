@@ -42,7 +42,9 @@ const templates = [
 ];
 
 const LOGO_SRC =
-  "/assets/generated/hope-for-humanity-logo-transparent.dim_800x500.png";
+  "/assets/generated/hope-for-humanity-logo-v2-transparent.dim_800x500.png";
+
+const FAVICON_SRC = "/assets/generated/favicon-hfhcd-transparent.dim_64x64.png";
 
 export function SocialMediaKit() {
   const ref = useRef(null);
@@ -74,11 +76,10 @@ export function SocialMediaKit() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="bg-offwhite border border-softborder rounded-2xl overflow-hidden shadow-card mb-10"
+          className="bg-offwhite border border-softborder rounded-2xl overflow-hidden shadow-card mb-6"
           data-ocid="brand.logo.card"
         >
           <div className="flex flex-col sm:flex-row items-stretch">
-            {/* Preview on dark forest green */}
             <div className="sm:w-72 lg:w-96 flex-shrink-0 flex items-center justify-center bg-forest p-8">
               <img
                 src={LOGO_SRC}
@@ -86,7 +87,6 @@ export function SocialMediaKit() {
                 className="max-h-40 w-auto object-contain"
               />
             </div>
-            {/* Info + download */}
             <div className="flex flex-1 items-center justify-between px-6 py-6 gap-4">
               <div>
                 <div className="font-display font-bold text-nearblack text-lg">
@@ -103,6 +103,46 @@ export function SocialMediaKit() {
                 data-ocid="brand.logo.download_button"
               >
                 <a href={LOGO_SRC} download="hope-humanity-logo.png">
+                  <Download size={14} />
+                  Download
+                </a>
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Favicon download card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="bg-offwhite border border-softborder rounded-2xl overflow-hidden shadow-card mb-10"
+          data-ocid="brand.favicon.card"
+        >
+          <div className="flex flex-col sm:flex-row items-stretch">
+            <div className="sm:w-72 lg:w-96 flex-shrink-0 flex items-center justify-center bg-nearblack p-8">
+              <img
+                src={FAVICON_SRC}
+                alt="HFHCD Favicon"
+                className="h-20 w-20 object-contain"
+              />
+            </div>
+            <div className="flex flex-1 items-center justify-between px-6 py-6 gap-4">
+              <div>
+                <div className="font-display font-bold text-nearblack text-lg">
+                  Favicon / Site Icon (PNG, Transparent)
+                </div>
+                <div className="text-charcoal/60 text-sm mt-1">
+                  64 × 64 px · For websites, browser tabs &amp; app icons
+                </div>
+              </div>
+              <Button
+                asChild
+                size="sm"
+                className="bg-gold hover:bg-gold-light text-nearblack font-semibold rounded-full gap-2 shadow-gold flex-shrink-0"
+                data-ocid="brand.favicon.download_button"
+              >
+                <a href={FAVICON_SRC} download="hfhcd-favicon.png">
                   <Download size={14} />
                   Download
                 </a>
