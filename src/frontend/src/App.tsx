@@ -1,12 +1,11 @@
-import { About } from "@/components/sections/About";
-import { Contact } from "@/components/sections/Contact";
-import { Education } from "@/components/sections/Education";
-import { Experience } from "@/components/sections/Experience";
+import { AboutSection } from "@/components/sections/AboutSection";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { ImpactStats } from "@/components/sections/ImpactStats";
+import { Mission } from "@/components/sections/Mission";
 import { Navbar } from "@/components/sections/Navbar";
-import { Services } from "@/components/sections/Services";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { Programs } from "@/components/sections/Programs";
+import { SocialMediaKit } from "@/components/sections/SocialMediaKit";
 
 export default function App() {
   return (
@@ -14,12 +13,11 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Services />
-        <Experience />
-        <Education />
-        <Testimonials />
-        <Contact />
+        <Mission />
+        <Programs />
+        <ImpactStats />
+        <AboutSection />
+        <SocialMediaKit />
       </main>
       <Footer />
     </div>

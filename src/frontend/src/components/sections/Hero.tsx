@@ -1,122 +1,116 @@
-import { siteContent } from "@/data/content";
-import { Facebook, Instagram, Mail, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
 import { motion } from "motion/react";
 
 export function Hero() {
-  const handleScroll = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      id="home"
+      className="relative min-h-screen flex items-center justify-center text-center overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, oklch(0.22 0.06 155) 0%, oklch(0.15 0.04 140) 100%)",
+      }}
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${siteContent.heroImage}')` }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0"
+        className="absolute inset-0 opacity-20"
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(5,30,20,0.72) 0%, rgba(8,50,30,0.60) 50%, rgba(5,20,10,0.85) 100%)",
+          backgroundImage:
+            "radial-gradient(circle at 20% 40%, oklch(0.66 0.13 72 / 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 70%, oklch(0.28 0.07 155 / 0.5) 0%, transparent 50%)",
         }}
-        aria-hidden="true"
       />
 
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
+        <svg
+          className="absolute bottom-0 left-0 w-full opacity-10"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          aria-hidden="true"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-12 bg-gold" />
-            <span className="text-gold text-xs tracking-[0.3em] uppercase font-medium">
-              Uganda & Rwanda
-            </span>
-            <div className="h-px w-12 bg-gold" />
-          </div>
-
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight tracking-wide uppercase mb-4">
-            {siteContent.name}
-          </h1>
-
-          <p className="text-gold text-lg sm:text-xl font-medium tracking-widest uppercase mb-1">
-            {siteContent.role}
-          </p>
-          <p className="text-gold/80 text-base sm:text-lg font-medium tracking-widest uppercase mb-8">
-            {siteContent.roleLocation}
-          </p>
-
-          <p className="text-white/80 text-xl sm:text-2xl font-display italic mb-10">
-            &ldquo;{siteContent.tagline}&rdquo;
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <button
-              type="button"
-              onClick={() => handleScroll("#services")}
-              className="bg-gold hover:bg-gold-light text-forest-dark font-bold text-sm tracking-widest uppercase px-8 py-4 rounded transition-all duration-200 shadow-gold min-w-[200px]"
-            >
-              VIEW MY SERVICES
-            </button>
-            <button
-              type="button"
-              onClick={() => handleScroll("#contact")}
-              className="border-2 border-gold text-gold hover:bg-gold hover:text-forest-dark font-bold text-sm tracking-widest uppercase px-8 py-4 rounded transition-all duration-200 min-w-[200px]"
-            >
-              CONTACT ME
-            </button>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 text-white/70">
-            <a
-              href={`tel:${siteContent.phones[0].replace(/\s/g, "")}`}
-              className="flex items-center gap-2 hover:text-gold transition-colors text-sm"
-            >
-              <Phone size={15} />
-              {siteContent.phones[0]}
-            </a>
-            <a
-              href={`mailto:${siteContent.email}`}
-              className="flex items-center gap-2 hover:text-gold transition-colors text-sm"
-            >
-              <Mail size={15} />
-              {siteContent.email}
-            </a>
-            <div className="flex items-center gap-3">
-              <a
-                href={siteContent.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gold transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href={siteContent.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gold transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={18} />
-              </a>
-            </div>
-          </div>
-        </motion.div>
+          <path
+            fill="oklch(0.66 0.13 72)"
+            d="M0,192L60,186.7C120,181,240,171,360,181.3C480,192,600,224,720,229.3C840,235,960,213,1080,186.7C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          />
+        </svg>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-white/40 text-xs tracking-widest uppercase">
-          Scroll
-        </span>
-        <div className="w-px h-10 bg-gradient-to-b from-gold/60 to-transparent" />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-40 pb-24">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <img
+            src="/assets/generated/hope-for-humanity-logo-transparent.dim_800x500.png"
+            alt="Hope for Humanity"
+            className="h-24 w-auto object-contain mx-auto"
+          />
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-warmwhite leading-tight mb-6"
+        >
+          Transforming Lives,{" "}
+          <span className="text-gold">Building Communities</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="text-warmwhite/80 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          Hope for Humanity and Community Development empowers communities
+          through sustainable programs in education, healthcare, and agriculture
+          — creating lasting change across Africa.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Button
+            asChild
+            size="lg"
+            className="bg-gold hover:bg-gold-light text-nearblack font-bold rounded-full px-8 shadow-gold text-base"
+            data-ocid="hero.primary_button"
+          >
+            <a href="#get-involved">Get Involved</a>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-2 border-warmwhite text-warmwhite hover:bg-warmwhite/10 rounded-full px-8 text-base"
+            data-ocid="hero.secondary_button"
+          >
+            <a href="#mission">Learn More</a>
+          </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="mt-16"
+        >
+          <a
+            href="#mission"
+            className="inline-flex flex-col items-center gap-2 text-warmwhite/60 hover:text-gold transition-colors"
+          >
+            <span className="text-sm">Discover Our Work</span>
+            <ArrowDown size={20} className="animate-bounce" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

@@ -10,9 +10,7 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      screens: { "2xl": "1400px" },
     },
     extend: {
       fontFamily: {
@@ -24,10 +22,12 @@ export default {
         "forest-dark": "oklch(var(--forest-dark) / <alpha-value>)",
         gold: "oklch(var(--gold) / <alpha-value>)",
         "gold-light": "oklch(var(--gold-light) / <alpha-value>)",
-        sand: "oklch(var(--sand) / <alpha-value>)",
-        parchment: "oklch(var(--parchment) / <alpha-value>)",
-        brown: "oklch(var(--brown) / <alpha-value>)",
         cream: "oklch(var(--cream) / <alpha-value>)",
+        offwhite: "oklch(var(--offwhite) / <alpha-value>)",
+        warmwhite: "oklch(var(--warmwhite) / <alpha-value>)",
+        nearblack: "oklch(var(--nearblack) / <alpha-value>)",
+        charcoal: "oklch(var(--charcoal) / <alpha-value>)",
+        softborder: "oklch(var(--softborder) / <alpha-value>)",
         border: "oklch(var(--border))",
         input: "oklch(var(--input))",
         ring: "oklch(var(--ring) / <alpha-value>)",
@@ -69,22 +69,14 @@ export default {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        card: "0 4px 24px rgba(11,90,58,0.10), 0 1px 4px rgba(0,0,0,0.06)",
-        gold: "0 4px 20px rgba(212,160,23,0.25)",
+        card: "0 4px 24px rgba(31,62,47,0.10), 0 1px 4px rgba(0,0,0,0.06)",
+        gold: "0 4px 20px rgba(199,146,46,0.3)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in": {
-          from: { opacity: "0", transform: "translateY(20px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
+        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
+        "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
+        "fade-in": { from: { opacity: "0", transform: "translateY(20px)" }, to: { opacity: "1", transform: "translateY(0)" } },
+        "count-up": { from: { opacity: "0" }, to: { opacity: "1" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

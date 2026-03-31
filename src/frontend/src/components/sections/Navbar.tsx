@@ -1,127 +1,115 @@
-import { siteContent } from "@/data/content";
-import { usePdfDownload } from "@/hooks/usePdfDownload";
-import { Download, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 const navLinks = [
-  { label: "ABOUT", href: "#about" },
-  { label: "SERVICES", href: "#services" },
-  { label: "EXPERIENCE", href: "#experience" },
-  { label: "TESTIMONIALS", href: "#testimonials" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "Home", href: "#home" },
+  { label: "Our Mission", href: "#mission" },
+  { label: "Programs", href: "#programs" },
+  { label: "Community Impact", href: "#impact" },
+  { label: "Get Involved", href: "#get-involved" },
+  { label: "About Us", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { download, loading } = usePdfDownload();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const handleNavClick = (href: string) => {
-    setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-forest shadow-lg" : "bg-forest/95 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 bg-forest transition-shadow ${
+        scrolled ? "shadow-lg" : ""
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
+        <a
+          href="#home"
+          className="flex items-center gap-3"
+          data-ocid="nav.link"
+        >
+          <img
+            src="/assets/generated/hope-for-humanity-logo-transparent.dim_800x500.png"
+            alt="Hope for Humanity"
+            className="h-14 w-auto object-contain"
+          />
+        </a>
+        <div className="flex items-center gap-3">
+          <Button
+            asChild
+            className="bg-gold hover:bg-gold-light text-nearblack font-semibold rounded-full px-6 shadow-gold hidden sm:flex"
+            data-ocid="nav.primary_button"
+          >
+            <a href="#get-involved">Donate Now</a>
+          </Button>
           <button
             type="button"
-            onClick={() => handleNavClick("#hero")}
-            className="font-display text-gold font-bold text-lg tracking-widest uppercase hover:text-gold-light transition-colors"
+            className="lg:hidden text-warmwhite"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+            data-ocid="nav.toggle"
           >
-            {siteContent.shortName}
-          </button>
-
-          <nav
-            className="hidden md:flex items-center gap-6 lg:gap-8"
-            aria-label="Main navigation"
-          >
-            {navLinks.map((link) => (
-              <button
-                type="button"
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sand/80 hover:text-gold text-xs tracking-widest font-medium transition-colors uppercase"
-              >
-                {link.label}
-              </button>
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              type="button"
-              onClick={download}
-              disabled={loading}
-              className="border border-gold text-gold hover:bg-gold/10 font-bold text-xs tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-200 flex items-center gap-2 disabled:opacity-60"
-            >
-              <Download size={14} />
-              {loading ? "GENERATING..." : "DOWNLOAD PDF"}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleNavClick("#contact")}
-              className="bg-gold hover:bg-gold-light text-forest-dark font-bold text-xs tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-200 shadow-gold"
-            >
-              BOOK A SAFARI
-            </button>
-          </div>
-
-          <button
-            type="button"
-            className="md:hidden text-sand p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>
 
-      {menuOpen && (
-        <div className="md:hidden bg-forest-dark border-t border-white/10">
-          <nav className="flex flex-col px-4 py-4 gap-1">
-            {navLinks.map((link) => (
-              <button
-                type="button"
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sand/80 hover:text-gold text-sm tracking-widest uppercase py-3 text-left border-b border-white/5 last:border-0 transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={download}
-              disabled={loading}
-              className="mt-3 border border-gold text-gold hover:bg-gold/10 font-bold text-xs tracking-widest uppercase px-5 py-3 rounded text-center flex items-center justify-center gap-2 disabled:opacity-60"
+      <nav
+        className="hidden lg:block border-t border-white/10"
+        data-ocid="nav.section"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-1 py-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-warmwhite/90 hover:text-gold text-sm font-medium px-4 py-2 rounded transition-colors"
+              data-ocid="nav.link"
             >
-              <Download size={14} />
-              {loading ? "GENERATING..." : "DOWNLOAD PDF"}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleNavClick("#contact")}
-              className="mt-2 bg-gold text-forest-dark font-bold text-xs tracking-widest uppercase px-5 py-3 rounded text-center"
-            >
-              BOOK A SAFARI
-            </button>
-          </nav>
+              {link.label}
+            </a>
+          ))}
         </div>
-      )}
+      </nav>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-forest-dark border-t border-white/10"
+            data-ocid="nav.dropdown_menu"
+          >
+            <div className="px-4 py-3 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-warmwhite py-2 text-base font-medium hover:text-gold transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                  data-ocid="nav.link"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <Button
+                asChild
+                className="bg-gold hover:bg-gold-light text-nearblack font-semibold rounded-full mt-2"
+              >
+                <a href="#get-involved">Donate Now</a>
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
