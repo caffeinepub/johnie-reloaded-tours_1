@@ -36,9 +36,9 @@ export function Navbar() {
           data-ocid="nav.link"
         >
           <img
-            src="/assets/generated/hope-for-humanity-logo-v2-transparent.dim_800x500.png"
+            src="/assets/generated/hope-humanity-logo-360x120-transparent.dim_360x120.png"
             alt="Hope for Humanity"
-            className="h-14 w-auto object-contain"
+            style={{ width: "180px", height: "60px", objectFit: "contain" }}
           />
         </a>
         <div className="flex items-center gap-3">

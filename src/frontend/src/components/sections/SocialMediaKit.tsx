@@ -42,9 +42,10 @@ const templates = [
 ];
 
 const LOGO_SRC =
-  "/assets/generated/hope-for-humanity-logo-v2-transparent.dim_800x500.png";
+  "/assets/generated/hope-humanity-logo-360x120-transparent.dim_360x120.png";
 
-const FAVICON_SRC = "/assets/generated/favicon-hfhcd-transparent.dim_64x64.png";
+const FAVICON_SRC =
+  "/assets/generated/favicon-hfhcd-512x512-transparent.dim_512x512.png";
 
 export function SocialMediaKit() {
   const ref = useRef(null);
@@ -84,7 +85,12 @@ export function SocialMediaKit() {
               <img
                 src={LOGO_SRC}
                 alt="Hope for Humanity Logo"
-                className="max-h-40 w-auto object-contain"
+                style={{
+                  width: "360px",
+                  height: "120px",
+                  objectFit: "contain",
+                  maxWidth: "100%",
+                }}
               />
             </div>
             <div className="flex flex-1 items-center justify-between px-6 py-6 gap-4">
@@ -93,7 +99,7 @@ export function SocialMediaKit() {
                   Organization Logo (PNG, Transparent)
                 </div>
                 <div className="text-charcoal/60 text-sm mt-1">
-                  800 × 500 px · Transparent background
+                  360 × 120 px · Transparent background
                 </div>
               </div>
               <Button
@@ -102,7 +108,7 @@ export function SocialMediaKit() {
                 className="bg-gold hover:bg-gold-light text-nearblack font-semibold rounded-full gap-2 shadow-gold flex-shrink-0"
                 data-ocid="brand.logo.download_button"
               >
-                <a href={LOGO_SRC} download="hope-humanity-logo.png">
+                <a href={LOGO_SRC} download="hope-humanity-logo-360x120.png">
                   <Download size={14} />
                   Download
                 </a>
@@ -124,7 +130,7 @@ export function SocialMediaKit() {
               <img
                 src={FAVICON_SRC}
                 alt="HFHCD Favicon"
-                className="h-20 w-20 object-contain"
+                style={{ width: "96px", height: "96px", objectFit: "contain" }}
               />
             </div>
             <div className="flex flex-1 items-center justify-between px-6 py-6 gap-4">
@@ -133,7 +139,7 @@ export function SocialMediaKit() {
                   Favicon / Site Icon (PNG, Transparent)
                 </div>
                 <div className="text-charcoal/60 text-sm mt-1">
-                  64 × 64 px · For websites, browser tabs &amp; app icons
+                  512 × 512 px · For websites, browser tabs &amp; app icons
                 </div>
               </div>
               <Button
@@ -142,7 +148,7 @@ export function SocialMediaKit() {
                 className="bg-gold hover:bg-gold-light text-nearblack font-semibold rounded-full gap-2 shadow-gold flex-shrink-0"
                 data-ocid="brand.favicon.download_button"
               >
-                <a href={FAVICON_SRC} download="hfhcd-favicon.png">
+                <a href={FAVICON_SRC} download="hfhcd-favicon-512x512.png">
                   <Download size={14} />
                   Download
                 </a>

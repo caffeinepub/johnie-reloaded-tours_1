@@ -48,9 +48,9 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1 space-y-5">
             <img
-              src="/assets/generated/hope-for-humanity-logo-v2-transparent.dim_800x500.png"
+              src="/assets/generated/hope-humanity-logo-360x120-transparent.dim_360x120.png"
               alt="Hope for Humanity"
-              className="h-16 w-auto object-contain"
+              style={{ width: "180px", height: "60px", objectFit: "contain" }}
             />
             <p className="text-warmwhite/70 text-sm leading-relaxed">
               Hope for Humanity and Community Development — empowering
